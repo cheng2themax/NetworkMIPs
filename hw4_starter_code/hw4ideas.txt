@@ -1,0 +1,63 @@
+Part 4: 
+
+Create Person 
+Takes address, obtaining a reference to first free node: 
+Math: size_of_node *number of nodes + starting address of the nodes returned in $v0  
+
+
+Part 5: 
+
+Add the size of each node to iterate through each 
+
+Part 6: use str_equals method 
+
+Part 7: Use str_cpy method to transcribe the name
+
+Part 8: same as part 6 with different output
+
+Part 9: is_relation_exists
+
+#$a0 is implicitly network #TODO: determine whether or not we need the get_person stuff within the method
+	# jal get_person 
+
+	# move $s1, $v0 #save the address of the first person in network (POSSIBLY NOT NEEDED)
+
+	# move $a0, $s0 #load in the network address
+	# move $a1, $s2 #load in the person 2
+
+	# jal get_person # save the address of the second person in network
+
+	# move $a2, $v0 
+	# move $a1, $s1 
+
+#other code
+
+Loop through and check if the first third of the edge matches any other -> check second edge if does keep looping
+
+
+
+Part 10: 
+Add relation, writing to correct offset of words #set param to 0 by default, 1 is for friendship
+
+
+	# jal get_person #get the network address of the person
+
+	# beqz $v0, return_AddRelation
+
+	# move $s1, $v0 #otherwise save the reference address in network for person1
+
+	# move $a0, $s0 
+	# move $a1, $s2 #move person 2 in
+
+	# jal get_person #get the network address of the person
+
+	# beqz $v0, return_AddRelation
+	
+	# move $s2, $v0 #otherwise save the reference address in network for person2
+Part 11: 
+Add friendship property, filling in the third param of each "edge"
+
+Part 12: 
+
+Use the verify relation to iterate through the persons inside of another helper function that determines whether or not two people are friends 
+(Basically is_relation_exists + check if the 3rd arg = 1, then return 1 if thats the case)
